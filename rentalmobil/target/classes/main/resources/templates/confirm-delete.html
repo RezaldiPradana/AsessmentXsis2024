@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Confirm Delete</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container mt-5">
+    <!-- Tambahkan elemen div untuk menampilkan informasi user di pojok kanan atas -->
+    <div class="text-end">
+        <p>Selamat datang, <strong th:text="${session.loggedInUser.username}"></strong>!</p>
+    </div>
+    
+    <h1 th:text="${title_web}"></h1>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Delete Mobil</h5>
+                </div>
+                <div class="card-body">
+                    <p>Anda yakin ingin menghapus mobil ini?</p>
+                    <form th:action="@{'/delete-mobil/' + ${id}}" method="post">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-danger">Ya, Hapus</button>
+                        <a th:href="@{/list-mobil}" class="btn btn-secondary">Batal</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

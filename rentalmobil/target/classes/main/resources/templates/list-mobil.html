@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Rental Mobil</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container mt-5">
+    <!-- Tambahkan elemen div untuk menampilkan informasi user di pojok kanan atas -->
+    <div class="text-end">
+        <p>Selamat datang, <strong th:text="${session.loggedInUser.username}"></strong>!</p>
+    </div>
+
+    <h1 th:text="${title_web}"></h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Mobil</th>
+            <th>Kapasitas</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${items}">
+            <td th:text="${item.seqId}"></td>
+            <td th:text="${item.mobil}"></td>
+            <td th:text="${item.Kapasitas}"></td>
+            <td th:text="${item.status}"></td>
+            <td>
+                <a th:href="@{'/edit-mobil/' + ${item.seqId}}">Edit</a>
+                <a th:href="@{'/delete-mobil/' + ${item.seqId}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-primary" th:href="@{/insert-mobil}">Insert Mobil</a>
+    <a class="btn btn-secondary" th:href="@{/}">Logout</a>
+</div>
+
+<script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

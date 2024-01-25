@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Rental Mobil</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container mt-5">
+    <div class="text-end">
+        <p>Selamat datang, <strong th:text="${session.loggedInUser.username}"></strong>!</p>
+    </div>
+
+    <h1 th:text="${title_web}"></h1>
+    <form th:action="@{/insert-mobil}" th:object="${mobil}" method="post">
+        <div class="mb-3">
+            <label for="mobil" class="form-label">Mobil:</label>
+            <input type="text" class="form-control" id="mobil" th:field="*{mobil}" required>
+        </div>
+        <div class="mb-3">
+            <label for="kapasitas" class="form-label">Kapasitas:</label>
+            <input type="text" class="form-control" id="kapasitas" th:field="*{kapasitas}" required>
+        </div>
+        <div class="mb-3">
+            <label for="status" class="form-label">Status:</label>
+            <input type="text" class="form-control" id="status" th:field="*{status}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Insert</button>
+        <a class="btn btn-secondary" th:href="@{/list-mobil}">Kembali</a>
+    </form>
+</div>
+
+<script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
